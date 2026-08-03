@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Habits Survey - Murdoch University</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 15mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1f2937;
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 20mm 15mm;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #10b981;
+      padding-bottom: 15mm;
+      margin-bottom: 10mm;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10mm;
+      margin-bottom: 5mm;
+    }
+
+    .logo-box {
+      width: 15mm;
+      height: 15mm;
+      background: #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18pt;
+      font-weight: bold;
+    }
+
+    .university-name {
+      font-size: 12pt;
+      color: #059669;
+      font-weight: bold;
+    }
+
+    .university-subtitle {
+      font-size: 9pt;
+      color: #6b7280;
+    }
+
+    .survey-title {
+      font-size: 16pt;
+      font-weight: bold;
+      color: #1f2937;
+      margin: 5mm 0;
+    }
+
+    /* Participant Info */
+    .participant-info {
+      background: #f0fdf4;
+      border: 1px solid #10b981;
+      padding: 5mm;
+      margin-bottom: 10mm;
+      font-size: 10pt;
+    }
+
+    .participant-info h3 {
+      font-size: 12pt;
+      color: #059669;
+      margin: 0 0 3mm 0;
+    }
+
+    .participant-info p {
+      margin: 2mm 0;
+    }
+
+    /* Introduction */
+    .introduction {
+      background: #f9fafb;
+      border-left: 4px solid #10b981;
+      padding: 5mm;
+      margin-bottom: 10mm;
+    }
+
+    .introduction h2 {
+      font-size: 12pt;
+      color: #1f2937;
+      margin: 0 0 3mm 0;
+    }
+
+    /* Questions */
+    .question {
+      margin-bottom: 8mm;
+      page-break-inside: avoid;
+    }
+
+    .question-number {
+      display: inline-block;
+      width: 8mm;
+      height: 8mm;
+      background: #10b981;
+      color: white;
+      text-align: center;
+      line-height: 8mm;
+      font-weight: bold;
+      margin-right: 3mm;
+      font-size: 9pt;
+    }
+
+    .question-text {
+      font-weight: bold;
+      margin-bottom: 3mm;
+    }
+
+    .question-text .required {
+      color: #dc2626;
+    }
+
+    .options {
+      margin-left: 11mm;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2mm;
+    }
+
+    .option-box {
+      width: 5mm;
+      height: 5mm;
+      border: 1px solid #1f2937;
+      margin-right: 3mm;
+      margin-top: 1mm;
+      flex-shrink: 0;
+    }
+
+    .option-circle {
+      border-radius: 50%;
+    }
+
+    .option-text {
+      flex: 1;
+    }
+
+    .text-answer {
+      width: 100%;
+      height: 20mm;
+      border: 1px solid #d1d5db;
+      margin-left: 11mm;
+      background: #fafafa;
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 10mm;
+      left: 15mm;
+      right: 15mm;
+      text-align: center;
+      font-size: 9pt;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 3mm;
+    }
+
+    .footer-page {
+      position: absolute;
+      right: 0;
+    }
+
+    /* Consent section */
+    .consent {
+      margin-top: 15mm;
+      padding: 5mm;
+      background: #f0fdf4;
+      border: 1px solid #10b981;
+      font-size: 9pt;
+    }
+
+    .consent h3 {
+      font-size: 10pt;
+      color: #059669;
+      margin: 0 0 3mm 0;
+    }
+
+    .consent ul {
+      margin: 2mm 0;
+      padding-left: 8mm;
+    }
+
+    .consent li {
+      margin: 1mm 0;
+    }
+
+    /* Print button */
+    .print-button {
+      display: none;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+
+      .print-button {
+        display: none !important;
+      }
+
+      .question {
+        page-break-inside: avoid;
+      }
+    }
+
+    @media screen {
+      .print-button {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #10b981;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .print-button:hover {
+        background: #059669;
+      }
+
+      body {
+        background: #f3f4f6;
+        padding: 20px;
+      }
+
+      .page {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin: 0 auto 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="print-button" onclick="window.print()">🖨️ Print Survey</button>
+
+  <div class="page">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-logo">
+        <div class="logo-box">M</div>
+        <div>
+          <div class="university-name">MURDOCH UNIVERSITY</div>
+          <div class="university-subtitle">Perth, Western Australia</div>
+        </div>
+      </div>
+      <h1 class="survey-title">Travel Habits of International Students at Murdoch University</h1>
+      <p style="color: #6b7280; font-size: 10pt;">Academic Survey Questionnaire</p>
+    </header>
+
+    <!-- Participant Information -->
+    <section class="participant-info">
+      <h3>📋 PARTICIPANT INFORMATION SHEET</h3>
+      <p><strong>Study Title:</strong> Travel Habits of International Students at Murdoch University</p>
+      <p><strong>Researcher:</strong> School of Business and Engineering, Murdoch University</p>
+      <p><strong>Duration:</strong> Approximately 2-3 minutes</p>
+      <p><strong>Target Participants:</strong> International students at Murdoch University</p>
+    </section>
+
+    <!-- Introduction -->
+    <section class="introduction">
+      <h2>📖 INTRODUCTION</h2>
+      <p>Thank you for participating in this survey. This questionnaire aims to investigate the travel habits and preferences of international students at Murdoch University.</p>
+      <p><strong>Important:</strong> Your responses are <em>anonymous</em> and will only be used for <em>academic purposes</em>.</p>
+    </section>
+
+    <!-- Question 1 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q1</span>
+        How often do you travel during your studies?<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Every week</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">2-3 times per month</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Once a month</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">A few times per semester</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Rarely or never</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q2</span>
+        What is your primary mode of transportation?<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Personal car</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Public bus</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Train</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Bicycle</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Walking</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Rideshare (Uber, etc.)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q3</span>
+        Which countries or regions have you visited while studying in Australia? (Select all that apply)<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">New Zealand</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Singapore</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Indonesia (Bali)</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Malaysia</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Thailand</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Japan</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">South Korea</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Other (please specify)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q4</span>
+        What is your average travel budget per trip (AUD)?<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Under $500</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">$500 - $1,000</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">$1,000 - $2,000</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">$2,000 - $5,000</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Over $5,000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q5</span>
+        Who do you usually travel with? (Select all that apply)<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Alone</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Friends from university</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Friends from home country</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Family members</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Organized tour group</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q6</span>
+        What factors influence your travel decisions? (Select all that apply)<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Cost/Budget</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Time availability</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Weather/Season</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Destination popularity</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Cultural attractions</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Adventure opportunities</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Academic schedule</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q7</span>
+        How do you usually book your travel arrangements?<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Online travel platforms (Booking.com, Expedia, etc.)</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Travel agency</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Airline/Transport company websites</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Social media recommendations</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Direct contact with hotels/providers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q8</span>
+        What type of accommodation do you prefer when traveling?<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Hotel</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Hostel</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Airbnb/Vacation rental</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Student dormitory/Hostel</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Camping</div>
+        </div>
+        <div class="option">
+          <div class="option-box option-circle"></div>
+          <div class="option-text">Staying with friends/family</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q9</span>
+        What activities do you enjoy most while traveling? (Select all that apply)<span class="required"> *</span>
+      </div>
+      <div class="options">
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Sightseeing/Visiting landmarks</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Beach activities</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Hiking/Outdoor adventures</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Food and cuisine exploration</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Shopping</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Cultural experiences/Museums</div>
+        </div>
+        <div class="option">
+          <div class="option-box"></div>
+          <div class="option-text">Nightlife/Entertainment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question">
+      <div class="question-text">
+        <span class="question-number">Q10</span>
+        Please share any memorable travel experiences at or near Murdoch University.
+      </div>
+      <div class="options">
+        <textarea class="text-answer" placeholder="Share your stories, favorite destinations, or travel tips for fellow international students..."></textarea>
+      </div>
+    </div>
+
+    <!-- Consent -->
+    <section class="consent">
+      <h3>✓ CONSENT</h3>
+      <p>By completing and submitting this survey, you indicate that:</p>
+      <ul>
+        <li>You understand the information provided above</li>
+        <li>You are at least 18 years of age</li>
+        <li>You voluntarily agree to participate in this research</li>
+      </ul>
+      <p style="margin-top: 3mm;"><strong>Privacy Notice:</strong> All responses are anonymous and used only for academic research. No personal data is collected or stored.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Murdoch University | International Student Travel Survey</span>
+      <span class="footer-page">Page 1 of 1</span>
+    </footer>
+  </div>
+</body>
+</html>
