@@ -5,4 +5,4 @@ PyJWT>=2.8.0
 bcrypt>=4.1.0
 python-dotenv>=1.0.0
 qrcode[pil]>=7.4.0
-libsql-client>=0.1.11,<0.2.0
+libsql-client<=0.1.10
