@@ -1,0 +1,17 @@
+{
+  "name": "murdoch-survey-system",
+  "version": "1.0.0",
+  "description": "Murdoch University International Student Travel Survey System",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev:client",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "build:vercel": "npm run build",
+    "preview": "cd client && npm run preview",
+    "setup": "cd client && npm install",
+    "vercel:dev": "vercel dev"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

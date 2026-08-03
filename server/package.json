@@ -1,0 +1,10 @@
+{
+  "name": "murdoch-survey-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "build": "tsc",
+    "start": "node index.js"
+  }
+}
